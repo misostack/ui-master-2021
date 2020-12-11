@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Layout</title>
+  <link rel="stylesheet" href="../share.css">
+  <style type="text/css">    
+    .layout{
+    }
+    .row {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-self: baseline;      
+    }
+    #header{
+      
+    }
+    #main {
+      flex: 0 0 calc(100% - 320px);
+    }
+    #sidebar{
+      flex: 0 0 320px;
+    }
+    #footer {
+      
+    }
+    @media (max-width: 800px) {
+      #main, #sidebar {
+        /* grow = 0 shrink = 0 basis = 100% */
+        flex: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">    
+      <div id="header" colspan="3">
+        <div class="section-hero">
+          <a href="" title="ezcss"><img src="../logo.png" alt="ezcss" /></a>
+        </div>        
+      </div>
+      <div class="row">
+        <div id="main" colspan="2">
+          <h2>Layout with flex</h2>
+          <p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Guide to flexbox</a></p>
+          <ul>
+            <li>Header(3cols)</li>
+            <li>Main(2cols)</li>
+            <li>Sidebar(1cols)</li>
+            <li>Footer(3cols)</li>
+          </ul>
+          <h3>Content A</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+          <h3>Content B</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+          <h3>Content C</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+        </div>
+        <div id="sidebar" colspan="1">
+          <h3>Sidebar</h3>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>
+          <h4>Other content</h4>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>        
+        </div>        
+      </div>
+      <div id="footer" colspan="3">
+        <p class="footer__copyright">Copyright @2020 EZCSS</p>
+      </div>    
+  </div>
+</body>
+</html>

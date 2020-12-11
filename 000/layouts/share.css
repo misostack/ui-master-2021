@@ -16,8 +16,9 @@
   width: auto;
 }
 
+#main,
 #sidebar {
-  padding: 0 20px;
+  padding: 0 10px;
   box-sizing: border-box;
 }
 #footer {
