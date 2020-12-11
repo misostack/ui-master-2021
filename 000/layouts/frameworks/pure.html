@@ -3,49 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flex Layout</title>
-  <link rel="stylesheet" href="../reset.css">
+  <title>Frameworks Layout - Pure</title>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
   <link rel="stylesheet" href="../share.css">
-  <style type="text/css">    
-    .layout{
-    }
-    .row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
-      align-self: baseline;      
-    }
-    #header{
-      
-    }
-    #main {
-      flex: 0 0 calc(100% - 320px);
-    }
-    #sidebar{
-      flex: 0 0 320px;
-    }
-    #footer {
-      
-    }
-    @media (max-width: 800px) {
-      #main, #sidebar {
-        /* grow = 0 shrink = 0 basis = 100% */
-        flex: 100%;
-      }
-    }
+  <style type="text/css">
+    
   </style>
 </head>
 <body>
   <div class="layout">    
-      <div id="header" colspan="3">
+      <div id="header">
         <div class="section-hero">
           <a href="" title="ezcss"><img src="../logo.png" alt="ezcss" /></a>
         </div>        
-      </div>
-      <div class="row">
-        <div id="main" colspan="2">
-          <h2>Layout with flex</h2>
-          <p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Guide to flexbox</a></p>
+      </div>      
+      <div class="pure-g">
+        <div id="main" class="pure-u-16-24">
+          <h2><a href="https://purecss.io/grids" target="_blank">Layout with Pure</a></h2>
+          <p>Pure support</p>
+          <ol>
+            <li>5ths-Based Units</li>
+            <li>12/24ths-Based Units</li>
+          </ol>
           <ul>
             <li>Header(3cols)</li>
             <li>Main(2cols)</li>
@@ -59,14 +38,15 @@
           <h3>Content C</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
         </div>
-        <div id="sidebar" colspan="1">
+        <div id="sidebar" class="pure-u-8-24">
           <h3>Sidebar</h3>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>
           <h4>Other content</h4>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>        
-        </div>        
+        </div>                  
       </div>
-      <div id="footer" colspan="3">
+    
+      <div id="footer">
         <p class="footer__copyright">Copyright @2020 EZCSS</p>
       </div>    
   </div>
