@@ -67,8 +67,30 @@ section.a ( background-image )
 
 ```
 
+## Rules and Tips
+
+> BEM
+
+- http://getbem.com/naming/
+- https://css-tricks.com/bem-101/
+
+```ezcss
+> Block : section.a
+> Element: section.a__title, section.a__form__submit
+> Modifier: section.a__form__submit--disabled
+
+```
+
+> 4 Different HTML/CSS Layout Techniques to Create a Site
+
+1. Table
+2. Float
+3. CSS Frameworks
+4. Flexbox
+
 ## Practice
 
+- [EZCSS](./000)
 - [Clocks](./001)
 
 ## References

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout with table</title>
+  <style type="text/css">
+    .layout{
+      width:100%;
+      max-width:960px;
+      margin:0px auto;
+    }
+
+    #header,#main,#sidebar,#footer{
+      vertical-align: baseline;
+    }
+
+    #header .section-hero{
+      height:210px;
+    }
+    #header .section-hero > a{
+      display: block;
+      height: 100%;
+      text-align: center;
+    }
+    #header .section-hero > a > img{
+      height: 100%;
+      width: auto;
+    }
+    
+    #sidebar{
+      width:320px;
+      padding:0 20px;
+      box-sizing: border-box;
+    }
+    #footer{
+      width:100%;
+    }
+    .footer__copyright{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <table class="layout">
+    <tr>
+      <td id="header" colspan="3">
+        <div class="section-hero">
+          <a href="" title="ezcss"><img src="../logo.png" alt="ezcss" /></a>
+        </div>        
+      </td>
+    </tr>
+    <tr>
+      <td id="main" colspan="2">
+        <h2>Layout with table</h2>
+        <ul>
+          <li>Header(3cols)</li>
+          <li>Main(2cols)</li>
+          <li>Sidebar(1cols)</li>
+          <li>Footer(3cols)</li>
+        </ul>
+        <h3>Content A</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+        <h3>Content B</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+        <h3>Content C</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+      </td>
+      <td id="sidebar" colspan="1">
+        <h3>Sidebar</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>
+        <h4>Other content</h4>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>        
+      </td>
+    </tr>
+    <tr>
+      <td id="footer" colspan="3">
+        <p class="footer__copyright">Copyright @2020 EZCSS</p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
