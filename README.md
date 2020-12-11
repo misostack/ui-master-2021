@@ -83,10 +83,10 @@ section.a ( background-image )
 
 > 4 Different HTML/CSS Layout Techniques to Create a Site
 
-1. Table
-2. Float
-3. CSS Frameworks
-4. Flexbox
+1. :white_check_mark: Table
+2. :white_check_mark: Float
+3. :white_check_mark: CSS Frameworks
+4. :white_check_mark: Flexbox
 
 ## Practice
 

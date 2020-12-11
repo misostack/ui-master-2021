@@ -3,28 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Layout with table</title>
+  <title>Float Layout</title>
   <link rel="stylesheet" href="../share.css">
   <style type="text/css">
-    #header,#main,#sidebar,#footer{
-      vertical-align: baseline;
+    #main {      
+      /*width: 640px;*/
+      width:66.67%;
     }
     #sidebar{
-      width:320px;
+      /*width: 320px;*/
+      width:33.33%;
+    }
+    #main, #sidebar{
+      float:left;
+    }
+    #footer{
+      float:left;
+      width:100%;
     }
   </style>
 </head>
 <body>
-  <table class="layout">
-    <tr>
-      <td id="header" colspan="3">
+  <div class="layout">    
+      <div id="header" colspan="3">
         <div class="section-hero">
           <a href="" title="ezcss"><img src="../logo.png" alt="ezcss" /></a>
         </div>        
-      </td>
-    </tr>
-    <tr>
-      <td id="main" colspan="2">
+      </div>   
+      <div id="main" colspan="2">
         <h2>Layout with table</h2>
         <ul>
           <li>Header(3cols)</li>
@@ -38,19 +44,16 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
         <h3>Content C</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
-      </td>
-      <td id="sidebar" colspan="1">
+      </div>
+      <div id="sidebar" colspan="1">
         <h3>Sidebar</h3>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>
         <h4>Other content</h4>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>        
-      </td>
-    </tr>
-    <tr>
-      <td id="footer" colspan="3">
+      </div>        
+      <div id="footer" colspan="3">
         <p class="footer__copyright">Copyright @2020 EZCSS</p>
-      </td>
-    </tr>
-  </table>
+      </div>    
+  </div>
 </body>
 </html>

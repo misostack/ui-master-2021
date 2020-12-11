@@ -1,0 +1,29 @@
+.layout {
+  width: 100%;
+  max-width: 960px;
+  margin: 0px auto;
+}
+#header .section-hero {
+  height: 210px;
+}
+#header .section-hero > a {
+  display: block;
+  height: 100%;
+  text-align: center;
+}
+#header .section-hero > a > img {
+  height: 100%;
+  width: auto;
+}
+
+#sidebar {
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+#footer {
+  margin-top: 20px;
+  width: 100%;
+}
+.footer__copyright {
+  text-align: center;
+}
