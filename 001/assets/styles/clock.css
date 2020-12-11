@@ -1,0 +1,40 @@
+.clock {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 20px auto 0 auto;
+  background: transparent url(assets/clockface.jpg) no-repeat scroll center
+    center;
+  background-size: cover;
+  list-style: none;
+}
+
+.clock-sec,
+.clock-min,
+.clock-hour {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.clock-sec {
+  background: transparent url(assets/sechand.png) no-repeat scroll center center;
+  background-size: contain;
+  z-index: 3;
+}
+
+.clock-min {
+  background: transparent url(assets/minhand.png) no-repeat scroll center center;
+  background-size: contain;
+  z-index: 2;
+}
+
+.clock-hour {
+  background: transparent url(assets/hourhand.png) no-repeat scroll center
+    center;
+  background-size: contain;
+  z-index: 1;
+}
