@@ -1,29 +1,16 @@
 # Prerequisites
 
-1. Layout
+## Landing page for the prerequisites
 
-- Flex
-- Grid
+> Mockup
 
-2. Typopgraphy
+![v0](./documents/ezcss-landing-page-v0.png)
 
-- Font family, fallback font
-- CSS Functions, CSS Parameters
+## BreakDown
 
-3. Responsive Web Design
+```js
 
-- Media Queries
-- Viewport
-- Images, Videos
-- CSS Frameworks
-
-4. Common Blocks
-
-...
-
-## Tutorials & Tips
-
-## Themes
+```
 
 ## Ref
 
