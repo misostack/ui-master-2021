@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frameworks Layout - Tailwind</title>
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.5/dist/base.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.5/dist/components.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@tailwindcss/typography@0.2.x/dist/typography.min.css"
+  />
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.5/dist/utilities.min.css" /> 
   <link rel="stylesheet" href="../share.css">
   <style type="text/css">
     
@@ -21,29 +28,33 @@
         <div id="main" class="w-8/12">
           <h2 class="text-6xl mb-6"><a href="https://tailwindcomponents.com/components/Layouts" 
             target="_blank">Layout with Tailwind</a></h2>
-          <p>Tailwind support</p>          
-          <ol>
-            <li>15ths-Based Units</li>
-            <li>12ths-Based Units</li>
-          </ol>
-          <ul>
-            <li>Header(3cols)</li>
-            <li>Main(2cols)</li>
-            <li>Sidebar(1cols)</li>
-            <li>Footer(3cols)</li>
-          </ul>
-          <h3>Content A</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
-          <h3>Content B</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
-          <h3>Content C</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+            <div class="prose">
+              <p>Tailwind support</p>          
+              <ol>
+                <li>15ths-Based Units</li>
+                <li>12ths-Based Units</li>
+              </ol>
+              <ul>
+                <li>Header(3cols)</li>
+                <li>Main(2cols)</li>
+                <li>Sidebar(1cols)</li>
+                <li>Footer(3cols)</li>
+              </ul>
+              <h3>Content A</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+              <h3>Content B</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+              <h3>Content C</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+            </div>
         </div>
         <div id="sidebar" class="w-4/12">
-          <h3>Sidebar</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>
-          <h4>Other content</h4>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>        
+          <div class="prose">
+            <h3>Sidebar</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>
+            <h4>Other content</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>        
+          </div>
         </div>                  
       </div>
     
