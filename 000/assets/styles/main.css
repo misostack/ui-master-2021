@@ -1,0 +1,118 @@
+.top-bar {
+  background: #000;
+}
+
+.top-bar__social_links {
+  display: flex;
+  margin: 0;
+  list-style: none;
+}
+.top-bar__social_links a {
+  color: white;
+  display: block;
+  line-height: 3rem;
+  font-size: 2rem;
+  padding: 0 0.5rem;
+}
+.top-bar__social_links a .fa {
+  line-height: 3rem;
+  font-size: 2rem;
+}
+
+.top-bar__social_links a:hover {
+  color: red;
+}
+
+.top-bar__nav {
+  margin: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  list-style: none;
+}
+
+.top-bar__nav > li > a {
+  color: white;
+  display: block;
+  line-height: 3rem;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+
+.top-bar__nav > li > a .fa {
+  line-height: 3rem;
+  font-size: 2rem;
+}
+
+.top-bar__nav__menu {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: translateY(calc(-100% - 3rem));
+  animation-name: slideup;
+  animation-duration: 1s;
+}
+
+.top-bar__nav__menu.visible {
+  animation-name: slidedown;
+  animation-duration: 1s;
+  transform: translateY(calc(3rem));
+}
+
+@keyframes slideup {
+  0% {
+    transform: translateY(calc(3rem));
+  }
+  /* 25% {
+    transform: translateY(calc(-70% - 3rem));
+  }
+  50% {
+    transform: translateY(calc(-50% - 3rem));
+  } */
+  100% {
+    transform: translateY(calc(-100% - 3rem));
+  }
+}
+
+@keyframes slidedown {
+  0% {
+    transform: translateY(calc(-100% - 3rem));
+  }
+  /* 25% {
+    transform: translateY(calc(-70% - 3rem));
+  }
+  50% {
+    transform: translateY(calc(-50% - 3rem));
+  } */
+  100% {
+    transform: translateY(calc(3rem));
+  }
+}
+
+.top-bar__nav__menu ul {
+  /*grow shrik basis*/
+  flex: 0 0 33%;
+  list-style: none;
+  padding: 3rem;
+}
+.top-bar__nav__menu li {
+  color: white;
+}
+.top-bar__nav__menu li a {
+  text-decoration: none;
+  color: white;
+}
+.top-bar__nav__menu li a:hover {
+  color: red;
+}
+.top-bar__nav__menu li:first-child {
+  font-size: 1.6rem;
+}
