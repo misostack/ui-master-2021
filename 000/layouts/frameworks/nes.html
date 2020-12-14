@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frameworks Layout - NES</title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="../share.css">
+  <style type="text/css">       
+    html, body, pre, code, kbd, samp {
+        font-family: "Press Start 2P";
+    }
+    .row{
+      display: flex;
+      align-items: baseline;
+    }
+    #main{
+      flex: 66.67%;
+    }
+    #sidebar{
+      flex: 33.33%;
+    }
+    #header .section-hero a{
+      background-image: none;
+    }
+    #header .section-hero img{
+      margin: 0px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">    
+      <div id="header">
+        <div class="section-hero">
+          <a href="" title="ezcss"><img src="../logo.png" alt="ezcss" /></a>
+        </div>        
+      </div>      
+      <div class="row">
+        <div id="main">
+          <h2><a href="https://nostalgic-css.github.io/NES.css/" target="_blank">Layout with NES</a></h2>
+          <p>NES support</p>
+          <ol>
+            <li>NES.css is NES-style <strong>(8bit-like)</strong> CSS Framework.</li>
+            <li>No default grid layout</li>
+          </ol>
+          <ul>
+            <li>Header(3cols)</li>
+            <li>Main(2cols)</li>
+            <li>Sidebar(1cols)</li>
+            <li>Footer(3cols)</li>
+          </ul>
+          <h3>Content A</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+          <h3>Content B</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+          <h3>Content C</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat tempora blanditiis, maxime nemo excepturi quae magni enim amet accusantium doloremque pariatur ea sit ratione natus ipsum doloribus quisquam libero?</p>
+        </div>
+        <div id="sidebar">
+          <h3>Sidebar</h3>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>
+          <h4>Other content</h4>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, id rem ea provident incidunt natus ex doloremque ratione, voluptatem aliquam, officiis earum explicabo. Corporis, est dolorem unde rerum ducimus ab!</p>        
+        </div>                  
+      </div>
+    
+      <div id="footer">
+        <p class="footer__copyright">Copyright @2020 EZCSS</p>
+      </div>    
+  </div>
+</body>
+</html>
