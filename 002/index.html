@@ -58,12 +58,8 @@
         left: 50%;
         margin-left: -60px;
         width: 120px;
-        bottom: 32px;
         background-color: rgba(0, 150, 0, 0.5);
         border: 1px solid rgba(255, 255, 255, 0.7);
-        box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
-        font-size: 14px;
-        font-family: "Lucida Grande", "Arial", sans-serif;
         color: rgba(255, 255, 255, 1);
       }
 
@@ -85,8 +81,6 @@
       .final {
         position: fixed;
         top: 0;
-        font-size: 16px;
-        font-family: "Lucida Grande", "Arial", sans-serif;
         width: 100%;
         height: 100vh;
         display: none;
@@ -279,15 +273,13 @@
 
             let data = canvas.toDataURL("image/png");
             photo.setAttribute("src", data);
-            const ratio = 1.7777778;
-            const photoHeight = window.innerWidth / ratio;
-            console.log(
-              $(".contentarea").outerWidth(),
-              $(".contentarea").outerHeight()
-            );
+            const ratio = canvas.width / canvas.height;
+            const photoHeight =
+              parseInt($(".contentarea").outerWidth()) / ratio;
+            console.log($(".contentarea").outerWidth(), photoHeight);
             $("#photo")
-              //   .width(parseInt(window.innerWidth))
-              //   .height(photoHeight)
+              .width($(".contentarea").outerWidth())
+              .height(photoHeight)
               .show();
             $("#video").remove();
             setTimeout(async () => {
@@ -297,9 +289,9 @@
                 let finalImage = canvas.toDataURL("image/png");
                 $(".contentarea").hide();
                 $("#final-photo").attr("src", finalImage);
-                $("#final-photo")
-                  .width($(".contentarea").outerWidth())
-                  .height($(".contentarea").outerHeight());
+                // $("#final-photo")
+                //   .width($(".contentarea").outerWidth())
+                //   .height($(".contentarea").outerHeight());
                 $(".final").show();
               });
             }, 2000);
