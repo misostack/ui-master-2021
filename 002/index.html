@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui"
+    />
     <title>Screen Capture with Video Demo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="html2canvas.js"></script>
@@ -12,7 +15,8 @@
         margin: 0;
       }
       #video {
-        width: 480px;
+        width: 100%;
+        max-width: 480px;
         height: 100vh;
         top: 0;
         position: fixed;
@@ -30,12 +34,14 @@
       }
 
       .camera {
-        width: 480px;
+        width: 100%;
+        max-width: 480px;
         display: inline-block;
       }
 
       .output {
-        width: 480px;
+        width: 100%;
+        max-width: 480px;
         position: fixed;
         display: flex;
         top: 0;
@@ -81,7 +87,8 @@
         float: left;
         margin-left: 500px;
         height: 100vh;
-        width: 480px;
+        width: 100%;
+        max-width: 480px;
       }
       #final-photo {
         display: none;
