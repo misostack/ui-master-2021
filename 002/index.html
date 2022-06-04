@@ -15,8 +15,7 @@
         margin: 0;
       }
       #video {
-        width: 100%;
-
+        width: auto;
         height: 100vh;
         top: 0;
         position: fixed;
@@ -274,24 +273,23 @@
             let data = canvas.toDataURL("image/png");
             photo.setAttribute("src", data);
             const ratio = canvas.width / canvas.height;
-            const photoHeight =
-              parseInt($(".contentarea").outerWidth()) / ratio;
-            console.log($(".contentarea").outerWidth(), photoHeight);
-            $("#photo")
-              .width($(".contentarea").outerWidth())
-              .height(photoHeight)
-              .show();
+            const maxHeight = $(".contentarea").outerHeight();
+
+            const photoWidth = $("#video").outerWidth();
+            const photoHeight = $("#video").outerHeight();
+            console.log(photoWidth, photoHeight);
+            $("#photo").width(photoWidth).height(photoHeight).show();
             $("#video").remove();
-            // setTimeout(async () => {
-            //   await html2canvas(document.querySelector(".contentarea"), {
-            //     allowTaint: true,
-            //   }).then((canvas) => {
-            //     let finalImage = canvas.toDataURL("image/png");
-            //     $(".contentarea").hide();
-            //     $("#final-photo").attr("src", finalImage);
-            //     $(".final").show();
-            //   });
-            // }, 2000);
+            setTimeout(async () => {
+              await html2canvas(document.querySelector(".contentarea"), {
+                allowTaint: true,
+              }).then((canvas) => {
+                let finalImage = canvas.toDataURL("image/png");
+                $(".contentarea").hide();
+                $("#final-photo").attr("src", finalImage);
+                $(".final").show();
+              });
+            }, 2000);
           } else {
             clearphoto();
           }
