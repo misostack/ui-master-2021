@@ -83,10 +83,13 @@
       }
 
       .final {
+        position: fixed;
         top: 0;
-        display: none;
-        height: 100vh;
+        font-size: 16px;
+        font-family: "Lucida Grande", "Arial", sans-serif;
         width: 100%;
+        height: 100vh;
+        display: none;
       }
       #final-photo {
         width: 100%;
@@ -276,8 +279,16 @@
 
             let data = canvas.toDataURL("image/png");
             photo.setAttribute("src", data);
-            const photoHeight = Math.ceil(window.width / 1.77777778);
-            $("#photo").width(window.width).height(photoHeight).show();
+            const ratio = 1.7777778;
+            const photoHeight = window.innerWidth / ratio;
+            console.log(
+              $(".contentarea").outerWidth(),
+              $(".contentarea").outerHeight()
+            );
+            $("#photo")
+              //   .width(parseInt(window.innerWidth))
+              //   .height(photoHeight)
+              .show();
             $("#video").remove();
             setTimeout(async () => {
               await html2canvas(document.querySelector(".contentarea"), {
@@ -286,7 +297,9 @@
                 let finalImage = canvas.toDataURL("image/png");
                 $(".contentarea").hide();
                 $("#final-photo").attr("src", finalImage);
-                $("#final-photo").width(window.width).height(photoHeight);
+                $("#final-photo")
+                  .width($(".contentarea").outerWidth())
+                  .height($(".contentarea").outerHeight());
                 $(".final").show();
               });
             }, 2000);
