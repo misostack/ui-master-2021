@@ -16,7 +16,7 @@
       }
       #video {
         width: 100%;
-        max-width: 480px;
+
         height: 100vh;
         top: 0;
         position: fixed;
@@ -35,13 +35,13 @@
 
       .camera {
         width: 100%;
-        max-width: 480px;
+
         display: inline-block;
       }
 
       .output {
         width: 100%;
-        max-width: 480px;
+
         position: fixed;
         display: flex;
         top: 0;
@@ -72,8 +72,7 @@
         top: 0;
         font-size: 16px;
         font-family: "Lucida Grande", "Arial", sans-serif;
-        width: 480px;
-        float: left;
+        width: 100%;
         height: 100vh;
       }
       .text {
@@ -84,14 +83,12 @@
       }
 
       .final {
-        float: left;
-        margin-left: 500px;
+        top: 0;
+        display: none;
         height: 100vh;
         width: 100%;
-        max-width: 480px;
       }
       #final-photo {
-        display: none;
         width: 100%;
         height: auto;
       }
@@ -279,14 +276,18 @@
 
             let data = canvas.toDataURL("image/png");
             photo.setAttribute("src", data);
-            $("#photo").show();
+            const photoHeight = Math.ceil(window.width / 1.77777778);
+            $("#photo").width(window.width).height(photoHeight).show();
             $("#video").remove();
             setTimeout(async () => {
               await html2canvas(document.querySelector(".contentarea"), {
                 allowTaint: true,
               }).then((canvas) => {
                 let finalImage = canvas.toDataURL("image/png");
-                $("#final-photo").attr("src", finalImage).show();
+                $(".contentarea").hide();
+                $("#final-photo").attr("src", finalImage);
+                $("#final-photo").width(window.width).height(photoHeight);
+                $(".final").show();
               });
             }, 2000);
           } else {
