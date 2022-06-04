@@ -16,6 +16,7 @@
         height: 100vh;
         top: 0;
         position: fixed;
+        z-index: 1;
       }
 
       #photo {
@@ -69,6 +70,12 @@
         float: left;
         height: 100vh;
       }
+      .text {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 9;
+      }
 
       .final {
         float: left;
@@ -85,13 +92,15 @@
   </head>
   <body>
     <div class="contentarea">
-      <h1>Heading</h1>
-      <button id="startbutton">Take photo</button>
-      <p>
-        This example demonstrates how to set up a media stream using your
-        built-in webcam, fetch an image from that stream, and create a PNG using
-        that image.
-      </p>
+      <div class="text">
+        <h1>Heading</h1>
+        <button id="startbutton">Take photo</button>
+        <p>
+          This example demonstrates how to set up a media stream using your
+          built-in webcam, fetch an image from that stream, and create a PNG
+          using that image.
+        </p>
+      </div>
       <div class="camera">
         <video id="video">Video stream not available.</video>
       </div>
@@ -139,6 +148,35 @@
           }
           return false;
         }
+        var isMobile = {
+          Android: function () {
+            return navigator.userAgent.match(/Android/i);
+          },
+          BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+          },
+          iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+          },
+          Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+          },
+          Windows: function () {
+            return (
+              navigator.userAgent.match(/IEMobile/i) ||
+              navigator.userAgent.match(/WPDesktop/i)
+            );
+          },
+          any: function () {
+            return (
+              isMobile.Android() ||
+              isMobile.BlackBerry() ||
+              isMobile.iOS() ||
+              isMobile.Opera() ||
+              isMobile.Windows()
+            );
+          },
+        };
 
         function startup() {
           if (showViewLiveResultButton()) {
@@ -148,14 +186,20 @@
           canvas = document.getElementById("canvas");
           photo = document.getElementById("photo");
           startbutton = document.getElementById("startbutton");
-
-          navigator.mediaDevices
-            .getUserMedia({
-              video: {
+          console.error(isMobile.any());
+          const videoConstraints = isMobile.any()
+            ? {
                 width: 1920,
                 height: 1080,
-                // facingMode: { exact: "environment" },
-              },
+                facingMode: { exact: "environment" },
+              }
+            : {
+                width: 1920,
+                height: 1080,
+              };
+          navigator.mediaDevices
+            .getUserMedia({
+              video: videoConstraints,
               audio: false,
             })
             .then(function (stream) {
