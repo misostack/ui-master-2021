@@ -15,8 +15,9 @@
         margin: 0;
       }
       #video {
-        width: auto;
-        height: auto;
+        width: 100%;
+
+        height: 100vh;
         top: 0;
         position: fixed;
         z-index: 1;
@@ -24,8 +25,11 @@
 
       #photo {
         display: none;
-        width: 100%;
-        height: auto;
+        height: 100vh;
+        top: 0;
+        position: relative;
+        z-index: 1;
+        aspect-ratio: auto 1920 / 1080;
       }
 
       #canvas {
@@ -40,12 +44,11 @@
 
       .output {
         width: 100%;
-
         position: fixed;
         display: flex;
         top: 0;
         bottom: 0;
-        align-items: center;
+        justify-content: center;
       }
 
       #startbutton {
@@ -275,21 +278,20 @@
             const ratio = canvas.width / canvas.height;
             const maxHeight = $(".contentarea").outerHeight();
 
-            const photoWidth = $("#video").outerWidth();
-            const photoHeight = $("#video").outerHeight();
-            console.log(photoWidth, photoHeight);
-            $("#photo").width(photoWidth).height(photoHeight).show();
+            // const photoWidth = $("#video").outerWidth();
+            // const photoHeight = $("#video").outerHeight();
+            $("#photo").show();
             $("#video").remove();
-            setTimeout(async () => {
-              await html2canvas(document.querySelector(".contentarea"), {
-                allowTaint: true,
-              }).then((canvas) => {
-                let finalImage = canvas.toDataURL("image/png");
-                $(".contentarea").hide();
-                $("#final-photo").attr("src", finalImage);
-                $(".final").show();
-              });
-            }, 2000);
+            // setTimeout(async () => {
+            //   await html2canvas(document.querySelector(".contentarea"), {
+            //     allowTaint: true,
+            //   }).then((canvas) => {
+            //     let finalImage = canvas.toDataURL("image/png");
+            //     $(".contentarea").hide();
+            //     $("#final-photo").attr("src", finalImage);
+            //     $(".final").show();
+            //   });
+            // }, 2000);
           } else {
             clearphoto();
           }
