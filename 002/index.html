@@ -10,16 +10,17 @@
     <title>Screen Capture with Video Demo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="html2canvas.js"></script>
+    <link rel="stylesheet" href="normalize.css" />
     <style type="text/css">
       body {
         margin: 0;
+        position: relative;
       }
       #video {
         width: 100%;
-        left: 0;
-        height: 100vh;
+        height: 100%;
+        position: fixed;
         top: 0;
-        position: absolute;
         z-index: 1;
       }
 
@@ -35,12 +36,6 @@
 
       #canvas {
         display: none;
-      }
-
-      .camera {
-        width: 100%;
-
-        display: inline-block;
       }
 
       .output {
@@ -284,16 +279,16 @@
             // const photoHeight = $("#video").outerHeight();
             $("#photo").show();
             $("#video").remove();
-            // setTimeout(async () => {
-            //   await html2canvas(document.querySelector(".contentarea"), {
-            //     allowTaint: true,
-            //   }).then((canvas) => {
-            //     let finalImage = canvas.toDataURL("image/png");
-            //     $(".contentarea").hide();
-            //     $("#final-photo").attr("src", finalImage);
-            //     $(".final").show();
-            //   });
-            // }, 2000);
+            setTimeout(async () => {
+              await html2canvas(document.querySelector(".contentarea"), {
+                allowTaint: true,
+              }).then((canvas) => {
+                let finalImage = canvas.toDataURL("image/png");
+                $(".contentarea").hide();
+                $("#final-photo").attr("src", finalImage);
+                $(".final").show();
+              });
+            }, 2000);
           } else {
             clearphoto();
           }
