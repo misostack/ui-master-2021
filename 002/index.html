@@ -16,6 +16,13 @@
         margin: 0;
         position: relative;
       }
+      .camera {
+        position: relative;
+      }
+      .camera-overlay {
+        display: none;
+        position: absolute;
+      }
       #video {
         width: 100%;
         height: 100%;
@@ -26,16 +33,15 @@
 
       #photo {
         display: none;
-        /* height: 100vh; */
-        width: 100%;
+        height: 100vh;
         top: 0;
         position: relative;
         z-index: 1;
-        aspect-ratio: auto 1920 / 1080;
+        /* aspect-ratio: auto 1920 / 1080; */
       }
 
       #canvas {
-        display: none;
+        display: block;
       }
 
       .output {
@@ -45,7 +51,7 @@
         top: 0;
         bottom: 0;
         justify-content: center;
-        flex-direction: column;
+        flex-direction: row;
       }
 
       #startbutton {
@@ -85,8 +91,8 @@
         display: none;
       }
       #final-photo {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100%;
       }
     </style>
   </head>
@@ -102,6 +108,7 @@
         </p>
       </div>
       <div class="camera">
+        <div class="camera-overlay"></div>
         <video id="video">Video stream not available.</video>
       </div>
       <canvas id="canvas"> </canvas>
@@ -189,44 +196,52 @@
           console.error(isMobile.any());
           const videoConstraints = isMobile.any()
             ? {
-                width: 1920,
-                height: 1080,
+                width: { min: 1024, ideal: 1280, max: 1920 },
+                height: { min: 576, ideal: 720, max: 1080 },
                 facingMode: { exact: "environment" },
               }
             : {
-                width: 1920,
-                height: 1080,
+                width: { min: 1024, ideal: 1280, max: 1920 },
+                height: { min: 576, ideal: 720, max: 1080 },
               };
-          navigator.mediaDevices
-            .getUserMedia({
-              video: videoConstraints,
-              audio: false,
-            })
-            .then(function (stream) {
-              video.srcObject = stream;
-              video.play();
-            })
-            .catch(function (err) {
-              console.log("An error occurred: " + err);
-            });
+          try {
+            navigator.mediaDevices
+              .getUserMedia({
+                video: videoConstraints,
+                audio: false,
+              })
+              .then(function (stream) {
+                video.srcObject = stream;
+                video.play();
+              })
+              .catch(function (err) {
+                console.log("An error occurred: " + err);
+              });
+          } catch (error) {
+            console.log(navigator.mediaDevices);
+          }
+
+          video.setAttribute("playsinline", true);
 
           video.addEventListener(
             "canplay",
             function (ev) {
               if (!streaming) {
-                height = video.videoHeight / (video.videoWidth / width);
+                const canvasHeight = $(".contentarea").outerHeight();
+                const canvasWidth =
+                  video.videoWidth / (video.videoHeight / canvasHeight);
+                // height = video.videoHeight / (video.videoWidth / width);
 
                 // Firefox currently has a bug where the height can't be read from
                 // the video, so we will make assumptions if this happens.
 
-                if (isNaN(height)) {
-                  height = width / (4 / 3);
-                }
+                width = canvasWidth;
+                height = canvasHeight;
 
-                video.setAttribute("width", width);
-                video.setAttribute("height", height);
-                canvas.setAttribute("width", width);
-                canvas.setAttribute("height", height);
+                video.setAttribute("width", canvasWidth);
+                video.setAttribute("height", canvasHeight);
+                canvas.setAttribute("width", canvasWidth);
+                canvas.setAttribute("height", canvasHeight);
                 streaming = true;
               }
             },
@@ -271,14 +286,20 @@
             context.drawImage(video, 0, 0, width, height);
 
             let data = canvas.toDataURL("image/png");
-            photo.setAttribute("src", data);
+            $("#photo").attr("src", data);
+            $("#photo").attr("width", width);
+            $("#photo").attr("height", height);
+            $("#canvas").hide();
+            $("#photo").show();
+            $("#video").remove();
+            // photo.setAttribute("src", data);
+
             const ratio = canvas.width / canvas.height;
-            const maxHeight = $(".contentarea").outerHeight();
 
             // const photoWidth = $("#video").outerWidth();
             // const photoHeight = $("#video").outerHeight();
-            $("#photo").show();
-            $("#video").remove();
+            // $("#photo").show();
+
             setTimeout(async () => {
               await html2canvas(document.querySelector(".contentarea"), {
                 allowTaint: true,
@@ -288,7 +309,7 @@
                 $("#final-photo").attr("src", finalImage);
                 $(".final").show();
               });
-            }, 2000);
+            }, 500);
           } else {
             clearphoto();
           }
