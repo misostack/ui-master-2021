@@ -231,7 +231,6 @@
               if (!streaming) {
                 const maxHeight = $(".camera").outerHeight();
                 const maxWidth = $(".camera").outerWidth();
-                alert(video.videoWidth + "." + video.videoHeight);
                 const canvasWidth = Math.ceil(
                   Math.min(maxWidth, video.videoWidth)
                 );
@@ -312,27 +311,28 @@
             // const photoHeight = $("#video").outerHeight();
             // $("#photo").show();
 
-            // setTimeout(async () => {
-            //   await html2canvas(document.querySelector("body"), {
-            //     allowTaint: true,
+            setTimeout(async () => {
+              console.log(
+                $(".contentarea").outerWidth(),
+                $(".contentarea").outerHeight()
+              );
+              await html2canvas(document.querySelector(".contentarea"), {
+                allowTaint: true,
 
-            //     imageTimeout: 15000,
-            //     scale: 1,
-            //     useCORS: true,
-            //     logging: true,
-            //   }).then((c) => {
-            //     let finalImage = c.toDataURL("image/png");
-            //     $("#final-photo").attr(
-            //       "style",
-            //       `background-image:url(${finalImage})`
-            //     );
-            //     // .width($(".contentarea").outerWidth())
-            //     // .height($(".contentarea").outerHeight())
-            //     // .attr("src", finalImage);
-            //     $(".final").show();
-            //     $(".contentarea").hide();
-            //   });
-            // }, 500);
+                imageTimeout: 15000,
+                scale: 1,
+                useCORS: true,
+                logging: true,
+              }).then((c) => {
+                let finalImage = c.toDataURL("image/png");
+                $("#final-photo")
+                  .width($(".contentarea").outerWidth())
+                  .height($(".contentarea").outerHeight())
+                  .attr("src", finalImage);
+                $(".final").removeClass("hidden");
+                $(".contentarea").addBack("hidden");
+              });
+            }, 500);
           } else {
             clearphoto();
           }
