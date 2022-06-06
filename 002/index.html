@@ -18,40 +18,32 @@
       }
       .camera {
         position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
       .camera-overlay {
         display: none;
         position: absolute;
       }
       #video {
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        z-index: 1;
       }
 
       #photo {
-        display: none;
-        height: 100vh;
-        top: 0;
-        position: relative;
-        z-index: 1;
-        /* aspect-ratio: auto 1920 / 1080; */
       }
 
       #canvas {
         display: block;
       }
 
-      .output {
-        width: 100%;
-        position: fixed;
+      .output,
+      .canvas-wrapper {
+        position: relative;
         display: flex;
-        top: 0;
-        bottom: 0;
         justify-content: center;
-        flex-direction: row;
+        align-items: center;
+        height: 100vh;
       }
 
       #startbutton {
@@ -84,15 +76,18 @@
       }
 
       .final {
-        position: fixed;
-        top: 0;
-        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 100vh;
+      }
+      .hidden {
         display: none;
       }
       #final-photo {
-        width: auto;
-        height: 100%;
+        max-width: 100%;
+        height: auto;
       }
     </style>
   </head>
@@ -111,12 +106,14 @@
         <div class="camera-overlay"></div>
         <video id="video">Video stream not available.</video>
       </div>
-      <canvas id="canvas"> </canvas>
-      <div class="output">
+      <div class="canvas-wrapper">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="output hidden">
         <img id="photo" alt="The screen capture will appear in this box." />
       </div>
     </div>
-    <div class="final">
+    <div class="final hidden">
       <img id="final-photo" src="" alt="" />
     </div>
     <script type="text/javascript">
@@ -227,9 +224,13 @@
             "canplay",
             function (ev) {
               if (!streaming) {
-                const canvasHeight = $(".contentarea").outerHeight();
-                const canvasWidth =
-                  video.videoWidth / (video.videoHeight / canvasHeight);
+                const maxHeight = $(".camera").outerHeight();
+                const maxWidth = $(".camera").outerWidth();
+                const canvasWidth = Math.min(maxWidth, video.videoWidth);
+                const canvasHeight =
+                  video.videoHeight / (video.videoWidth / canvasWidth);
+                // const canvasWidth =
+                //   video.videoWidth / (video.videoHeight / canvasHeight);
                 // height = video.videoHeight / (video.videoWidth / width);
 
                 // Firefox currently has a bug where the height can't be read from
@@ -289,12 +290,14 @@
             $("#photo").attr("src", data);
             $("#photo").attr("width", width);
             $("#photo").attr("height", height);
-            $("#canvas").hide();
-            $("#photo").show();
-            $("#video").remove();
+            $(".output").removeClass("hidden");
+            $(".camera").remove();
+            $(".canvas-wrapper").hide();
+
+            // $("#video").remove();
             // photo.setAttribute("src", data);
 
-            const ratio = canvas.width / canvas.height;
+            // const ratio = canvas.width / canvas.height;
 
             // const photoWidth = $("#video").outerWidth();
             // const photoHeight = $("#video").outerHeight();
