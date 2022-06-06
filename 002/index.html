@@ -86,6 +86,13 @@
         display: none;
       }
       #final-photo {
+        display: block;
+        height: 100vh;
+        width: 100%;
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-image: none;
       }
     </style>
   </head>
@@ -112,7 +119,7 @@
       </div>
     </div>
     <div class="final hidden">
-      <img id="final-photo" src="" alt="" />
+      <div id="final-photo"></div>
     </div>
     <script type="text/javascript">
       (function () {
@@ -224,9 +231,12 @@
               if (!streaming) {
                 const maxHeight = $(".camera").outerHeight();
                 const maxWidth = $(".camera").outerWidth();
-                const canvasWidth = Math.min(maxWidth, video.videoWidth);
-                const canvasHeight =
-                  video.videoHeight / (video.videoWidth / canvasWidth);
+                const canvasWidth = Math.ceil(
+                  Math.min(maxWidth, video.videoWidth)
+                );
+                const canvasHeight = Math.ceil(
+                  video.videoHeight / (video.videoWidth / canvasWidth)
+                );
                 // const canvasWidth =
                 //   video.videoWidth / (video.videoHeight / canvasHeight);
                 // height = video.videoHeight / (video.videoWidth / width);
@@ -301,21 +311,27 @@
             // const photoHeight = $("#video").outerHeight();
             // $("#photo").show();
 
-            // setTimeout(async () => {
-            //   await html2canvas(document.querySelector(".contentarea"), {
-            //     allowTaint: true,
-            //     width: $(".contentarea").outerWidth(),
-            //     height: $(".contentarea").outerHeight(),
-            //   }).then((c) => {
-            //     let finalImage = c.toDataURL("image/png");
-            //     $("#final-photo")
-            //       .width($(".contentarea").outerWidth())
-            //       .height($(".contentarea").outerHeight())
-            //       .attr("src", finalImage);
-            //     $(".final").show();
-            //     $(".contentarea").hide();
-            //   });
-            // }, 500);
+            setTimeout(async () => {
+              await html2canvas(document.querySelector("body"), {
+                allowTaint: true,
+
+                imageTimeout: 15000,
+                scale: 1,
+                useCORS: true,
+                logging: true,
+              }).then((c) => {
+                let finalImage = c.toDataURL("image/png");
+                $("#final-photo").attr(
+                  "style",
+                  `background-image:url(${finalImage})`
+                );
+                // .width($(".contentarea").outerWidth())
+                // .height($(".contentarea").outerHeight())
+                // .attr("src", finalImage);
+                $(".final").show();
+                $(".contentarea").hide();
+              });
+            }, 500);
           } else {
             clearphoto();
           }
